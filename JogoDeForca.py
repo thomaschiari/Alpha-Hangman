@@ -1,18 +1,23 @@
 import random
 
 class JogoDeForca:
-    def __init__(self):
-        import requests
-        url = 'https://www.ime.usp.br/~pf/dicios/br-sem-acentos.txt'
-        r = requests.get(url, allow_redirects=True)
-        if r.status_code==200:
-            self.content = str(r.content.decode()).split('\n')
+    def __init__(self, palavra=None):
+        if palavra is None:
+            self.palavra = None
+            import requests
+            url = 'https://www.ime.usp.br/~pf/dicios/br-sem-acentos.txt'
+            r = requests.get(url, allow_redirects=True)
+            if r.status_code==200:
+                self.content = str(r.content.decode()).split('\n')
+            else:
+                print("Erro: ", r.status_code)
         else:
-            print("Erro: ", r.status_code)
+            self.palavra = palavra
     
     def novo_jogo(self, vidas=5):
         self.vidas = vidas
-        self.palavra = random.choice(self.content)
+        if self.palavra is None:
+            self.palavra = random.choice(self.content)
         return len(self.palavra)
 
     def tentar_letra(self, letra):

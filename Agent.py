@@ -1,12 +1,12 @@
+import math
+
 class Agent:
 
     def __init__(self, letras_nao, letras_sim, tamanho_palavra):
-        self.letras_nao = letras_nao # letras q nao sao parte da resposta do hangman
-        self.letras_sim = letras_sim # letras q sao parte da resposta do hangman
-        self.tamanho_palavra = tamanho_palavra # tamanho da palavra a ser adivinhada
+        self.letras_nao = letras_nao  # letras q nao sao parte da resposta do hangman
+        self.letras_sim = letras_sim  # letras q sao parte da resposta do hangman
+        self.tamanho_palavra = tamanho_palavra  # tamanho da palavra a ser adivinhada
         self.palavra = ['_' for i in range(tamanho_palavra)]
-
-
 
 
     def escolher_letra(self):
@@ -20,8 +20,6 @@ class Agent:
         for idx in range(self.tamanho_palavra):
             if self.palavra[idx] != '_':
                 wordlist = [word for word in wordlist if word[idx] == self.palavra[idx]]
-
-
 
         # faremos uma decisao de qual letra escolher baseado na frequencia de cada letra
         # na wordlist
@@ -41,7 +39,46 @@ class Agent:
                 return letter[0]
         # se nao houver nenhuma letra que nao sabemos, retornamos a letra mais frequente
         return frequencia_letras[0][0]
-    
+
+
+    def escolher_letra_entropia(self):
+        with open('wordlist.txt', 'r') as f:
+            wordlist = f.read().splitlines()
+        wordlist = [word for word in wordlist if len(word) == self.tamanho_palavra]
+        for letter in self.letras_nao:
+            wordlist = [word for word in wordlist if letter not in word]
+        for idx in range(self.tamanho_palavra):
+            if self.palavra[idx] != '_':
+                wordlist = [word for word in wordlist if word[idx] == self.palavra[idx]]
+
+        frequencia_letras = {}
+        total_letras = 0
+        for word in wordlist:
+            for letter in word:
+                total_letras += 1
+                if letter in frequencia_letras:
+                    frequencia_letras[letter] += 1
+                else:
+                    frequencia_letras[letter] = 1
+
+        # Calcular a probabilidade de cada letra
+        probabilidade_letras = {letter: freq / total_letras for letter, freq in frequencia_letras.items()}
+
+        # Calcular a entropia de cada letra
+        entropia_letras = {letter: -prob * math.log2(prob) for letter, prob in probabilidade_letras.items()}
+        entropia_letras = {k: v for k, v in sorted(entropia_letras.items(), key=lambda item: item[1], reverse=True)}
+
+        print("Entropia de cada letra:", entropia_letras)
+
+        frequencia_letras = sorted(frequencia_letras.items(), key=lambda x: x[1], reverse=True)
+
+        for letter in frequencia_letras:
+            if letter[0] not in self.letras_sim and letter[0] not in self.letras_nao:
+                return letter[0]
+
+        return frequencia_letras[0][0]
+
+
     def receber_feedback(self, letra, feedback):
         try:
             if feedback != []:

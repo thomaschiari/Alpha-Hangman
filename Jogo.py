@@ -1,5 +1,5 @@
-from JogoDaForca import JogoDeForca
-from agente import Agent
+from JogoDeForca import JogoDeForca
+from Agent import Agent
 
 jogo = JogoDeForca()
 print(jogo.novo_jogo())
