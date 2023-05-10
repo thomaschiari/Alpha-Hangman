@@ -1,6 +1,6 @@
 # Alpha-Hangman
 
-Implementação e avaliação de um jogador de forca, utilizando os conceitos de Álgebra Linear.
+Implementação e avaliação de um jogador de forca, utilizando os conceitos de Álgebra Linear e Teoria da Informação.
 
 ## Autores
 - Marcelo Rabello Barranco
