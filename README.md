@@ -35,9 +35,8 @@ Como o agente seleciona a letra com maior frequência, é esperado que também s
 Caso o jogador selecionasse uma palavra com baixa entropia, a probabilidade de estar correto é bem menor, porém caso esteja, o jogador terá muito mais informação acerca da palavra do que anteriormente, reduzindo a entropia do sistema.
 Contudo, essa não é uma estratégia ótima pois, como já dito, a probabilidade de uma letra com baixa entropia estar presente na palavra é bem menor que uma com alta entropia.
 
-Nas palavras que o agente erra, como pode ser visto no arquivo [`demo.ipynb`](demo.ipynb), as letras que estão presentes possuem uma frequência e, portanto, uma entropia menor do que as letras que não estão presentes.
-Isso é evidenciado na figura a seguir:
+Nas palavras que o agente erra, as letras que estão presentes possuem uma frequência e, portanto, uma entropia menor do que as demais. Isso é evidenciado na figura a seguir:
 
 ![Probabilidades](prob_graph.png)
 
-Em resumo, o agente, selecionando a letra de maior frequência e entropia, consegue obter uma alta taxa de acerto. Isso se enquadra no Princípio da Máxima Entropia, em que o agente irá selecionar uma distribuição que maximiza a entropia, podendo fazer uma inferência sem tendências com base nas informações conhecidas. 
+Em resumo, o agente, selecionando a letra de maior frequência e entropia, consegue obter uma alta taxa de acerto. Isso se enquadra no Princípio da Máxima Entropia, em que o agente irá selecionar uma distribuição que maximiza a entropia, podendo fazer uma inferência com base nas informações conhecidas. Por mais que nesse caso o agente não esteja buscando uma distribuição de probabilidades e sim um item específico, o agente busca realizar a aposta mais segura com base em toda a informação disponível.
