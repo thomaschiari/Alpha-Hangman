@@ -40,4 +40,4 @@ Isso é evidenciado na figura a seguir:
 
 ![Probabilidades](prob_graph.png)
 
-Em resumo, o agente, selecionando a letra de maior frequência e entropia, consegue obter uma alta taxa de acerto, porém caso selecionasse uma letra com baixa entropia, se estivesse certo, teria muito mais informação acerca da palavra do que anteriormente.
+Em resumo, o agente, selecionando a letra de maior frequência e entropia, consegue obter uma alta taxa de acerto. Isso se enquadra no Princípio da Máxima Entropia, em que o agente irá selecionar uma distribuição que maximiza a entropia, podendo fazer uma inferência sem tendências com base nas informações conhecidas. 
