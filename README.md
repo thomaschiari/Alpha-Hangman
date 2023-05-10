@@ -39,4 +39,4 @@ Nas palavras que o agente erra, as letras que estão presentes possuem uma frequ
 
 ![Probabilidades](prob_graph.png)
 
-Em resumo, o agente, selecionando a letra de maior frequência e entropia, consegue obter uma alta taxa de acerto. Isso se enquadra no Princípio da Máxima Entropia, em que o agente irá selecionar uma distribuição que maximiza a entropia, podendo fazer uma inferência com base nas informações conhecidas. Por mais que nesse caso o agente não esteja buscando uma distribuição de probabilidades e sim um item específico, o agente busca realizar a aposta mais segura com base em toda a informação disponível.
+Em resumo, o agente, selecionando a letra de maior frequência e entropia, consegue obter uma alta taxa de acerto. Isso pode se enquadrar no Princípio da Máxima Entropia, em que o agente irá selecionar uma distribuição que maximiza a entropia, podendo fazer uma inferência com base nas informações conhecidas. Por mais que nesse caso o agente não esteja buscando uma distribuição de probabilidades e sim um item específico, o agente busca realizar a aposta mais segura com base em toda a informação disponível.
